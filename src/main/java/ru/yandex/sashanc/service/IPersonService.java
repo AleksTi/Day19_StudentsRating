@@ -9,9 +9,13 @@ public interface IPersonService {
 
     Person getPersonById(int id);
 
+    Person getPersonByEmail(String email);
+
     List<Person> getPersons(String role);
 
     boolean updatePerson(Person person);
 
     boolean deletePerson(int id);
+
+    boolean checkPerson(Person person, String password);
 }

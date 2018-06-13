@@ -15,4 +15,6 @@ public interface IPersonDao {
     public boolean updatePerson(Person person);
 
     public boolean deletePersonById(int id);
+
+    public Person getPersonByEmail(String email) throws SQLException;
 }

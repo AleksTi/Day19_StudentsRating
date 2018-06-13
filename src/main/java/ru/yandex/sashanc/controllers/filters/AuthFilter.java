@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebFilter(urlPatterns = "/inner/*", filterName = "auth-filter")
+//@WebFilter(urlPatterns = "/student/*", filterName = "auth-filter")
 public class AuthFilter implements Filter {
     private static final Logger logger = Logger.getLogger(AuthFilter.class);
 
@@ -25,9 +25,9 @@ public class AuthFilter implements Filter {
         } else {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/index.jsp");
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/");
         }
-        logger.info("\"AuthFilter.doFilter()\" method have done");
+        logger.info("Method \"AuthFilter.doFilter()\" have done");
     }
 
     @Override

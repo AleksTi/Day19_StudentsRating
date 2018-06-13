@@ -20,6 +20,6 @@
     </filter>
     <filter-mapping>
         <filter-name>authFilter</filter-name>
-        <url-pattern>/studentlist</url-pattern>
+        <url-pattern>/student/*</url-pattern>
     </filter-mapping>
 </web-app>

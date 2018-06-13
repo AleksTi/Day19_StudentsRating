@@ -1,10 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <ul class="nav nav-sidebar">
-    <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-    <li><a href="#">Reports</a></li>
-    <li><a href="#">Analytics</a></li>
-    <li><a href="#">Export</a></li>
-    <%@include file="/pages/blocks/sidebarteacher.jsp" %>
-    <%@include file="/pages/blocks/sidebaradmin.jsp" %>
+    <li class="active"><a href="#">Главная<span class="sr-only">(current)</span></a></li>
+    <li><a href="#">Расписание</a></li>
+    <c:if test="${role == 'student'}">
+        <li><a href="#">Успеваемость</a></li>
+    </c:if>
+    <c:if test="${role == 'teachear'}">
+        <%@include file="/pages/blocks/sidebarteacher.jsp" %>
+    </c:if>
+    <c:if test="${role == 'admin'}">
+        <%@include file="/pages/blocks/sidebarteacher.jsp" %>
+        <%@include file="/pages/blocks/sidebaradmin.jsp" %>
+    </c:if>
 </ul>

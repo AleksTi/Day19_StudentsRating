@@ -18,14 +18,14 @@
             <%@include file="/pages/blocks/sidebar.jsp" %>
         </div>
         <div class="col-md-9">
-            <p>Список студентов</p>
+            <h2>Список студентов</h2>
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">e-mail</th>
                 </tr>
                 </thead>
                 <tbody>

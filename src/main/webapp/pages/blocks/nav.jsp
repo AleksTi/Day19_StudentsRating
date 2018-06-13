@@ -18,7 +18,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active hidden"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/registration">Регистрация</a></li>
+                <c:if test="${sessionScope.get('email') == null}">
+                    <li><a href="${pageContext.request.contextPath}/registration">Регистрация</a></li>
+                </c:if>
                 <li class="dropdown hidden">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -35,7 +37,12 @@
             </ul>
 
             <!--login form-->
-            <%@include file="./navnotlogged.jsp" %>
+            <c:if test="${email == null}">
+                <%@include file="./navnotlogged.jsp" %>
+            </c:if>
+            <c:if test="${email != null}">
+                <%@include file="./navlogged.jsp" %>
+            </c:if>
             <!--end login form-->
 
         </div><!-- /.navbar-collapse -->
