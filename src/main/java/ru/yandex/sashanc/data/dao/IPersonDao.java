@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IPersonDao {
-    public boolean addPerson(Person person);
+    public boolean addPerson(Person person) throws SQLException;
 
     public Person getPersonById(int id) throws SQLException;
 

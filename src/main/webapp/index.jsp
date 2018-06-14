@@ -22,7 +22,9 @@
             <%@include file="/pages/blocks/sidebar.jsp" %>
         </div>
         <div class="col-md-9">
-
+            <c:if test="${sessionScope.get('email') != null}">
+                <p class="lead"><%=session.getAttribute("name")%>, добро пожаловать в систему успеваемости студентов</p>
+            </c:if>
         </div>
     </div>
 </div>

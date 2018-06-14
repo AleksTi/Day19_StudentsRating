@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <ul class="nav nav-sidebar">
-    <li class="active"><a href="#">Главная<span class="sr-only">(current)</span></a></li>
+    <li class="active"><a href="${pageContext.request.contextPath}/">Главная<span class="sr-only">(current)</span></a>
+    </li>
     <li><a href="#">Расписание</a></li>
     <c:if test="${role == 'student'}">
         <li><a href="#">Успеваемость</a></li>

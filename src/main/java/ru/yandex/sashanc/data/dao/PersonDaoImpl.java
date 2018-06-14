@@ -16,7 +16,23 @@ public class PersonDaoImpl implements IPersonDao {
 
 
     @Override
-    public boolean addPerson(Person person) {
+    public boolean addPerson(Person person) throws SQLException {
+        try (Connection connection = connectionManager.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("INSERT " +
+                    "INTO person (name, surname, email, passwordhash, role, datereg, lastlogdate)  " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+                statement.setString(1, person.getName());
+                statement.setString(2, person.getSurname());
+                statement.setString(3, person.getEmail());
+                statement.setString(4, person.getPassword());
+                statement.setString(5, person.getRole());
+                statement.setDate(6, person.getRegDate());
+                statement.setDate(7, person.getRegDate());
+                if (statement.executeUpdate() == 1) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 

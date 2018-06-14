@@ -5,7 +5,7 @@ import ru.yandex.sashanc.pojo.Person;
 import java.util.List;
 
 public interface IPersonService {
-    boolean createPerson(Person person);
+    boolean createPerson(String name, String surname, String email, String password, String role);
 
     Person getPersonById(int id);
 
