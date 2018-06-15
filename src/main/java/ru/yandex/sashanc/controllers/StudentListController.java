@@ -17,7 +17,7 @@ public class StudentListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPost(req, resp);
-
         //request.setAttribute("students", personService.getPersons("student"));
+        //request.getRequestDispatcher(request.getContextPath() + "pages/students.jsp").forward(request, response);
     }
 }

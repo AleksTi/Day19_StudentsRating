@@ -3,10 +3,11 @@ package ru.yandex.sashanc.pojo;
 public class Discipline {
     private int id;
     private String name;
+    private int teacherId;
+    private String teacherName;
+    private String teacherSurname;
 
-    public Discipline(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public Discipline() {
     }
 
     public int getId() {
@@ -23,5 +24,29 @@ public class Discipline {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTeacherSurname() {
+        return teacherSurname;
+    }
+
+    public void setTeacherSurname(String teacherSurname) {
+        this.teacherSurname = teacherSurname;
     }
 }

@@ -5,16 +5,22 @@ import java.sql.Time;
 
 public class Lesson {
     private int id;
-    private String disName;
+    private String disciplineName;
     private String theme;
     private String link;
     private String place;
     private Date date;
     private Time time;
+    private String teacherName;
+    private String teacherSurname;
 
-    public Lesson(int id, String disName, String theme, String link, String place, Date date, Time time) {
+    public Lesson() {
+
+    }
+
+    public Lesson(int id, String disciplineName, String theme, String link, String place, Date date, Time time) {
         this.id = id;
-        this.disName = disName;
+        this.disciplineName = disciplineName;
         this.theme = theme;
         this.link = link;
         this.place = place;
@@ -30,12 +36,12 @@ public class Lesson {
         this.id = id;
     }
 
-    public String getDisName() {
-        return disName;
+    public String getDisciplineName() {
+        return disciplineName;
     }
 
-    public void setDisName(String disName) {
-        this.disName = disName;
+    public void setDisciplineName(String disciplineName) {
+        this.disciplineName = disciplineName;
     }
 
     public String getTheme() {
@@ -76,5 +82,21 @@ public class Lesson {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTeacherSurname() {
+        return teacherSurname;
+    }
+
+    public void setTeacherSurname(String teacherSurname) {
+        this.teacherSurname = teacherSurname;
     }
 }

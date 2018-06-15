@@ -3,7 +3,7 @@
 <ul class="nav nav-sidebar">
     <li class="active"><a href="${pageContext.request.contextPath}/">Главная<span class="sr-only">(current)</span></a>
     </li>
-    <li><a href="#">Расписание</a></li>
+    <li><a href="${pageContext.request.contextPath}/schedule">Расписание</a></li>
     <c:if test="${role == 'student'}">
         <li><a href="#">Успеваемость</a></li>
     </c:if>

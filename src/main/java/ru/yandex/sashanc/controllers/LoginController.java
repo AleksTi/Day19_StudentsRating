@@ -33,8 +33,6 @@ public class LoginController extends HttpServlet {
             request.getSession().setAttribute("role", person.getRole());
             request.getSession().setAttribute("name", person.getName());
             request.getSession().setAttribute("surname", person.getSurname());
-            request.setAttribute("students", personService.getPersons("student"));
-            //request.getRequestDispatcher(request.getContextPath() + "pages/students.jsp").forward(request, response);
             request.getRequestDispatcher(request.getContextPath() + "/").forward(request, response);
             logger.info("\"if\" condition of Method \"LoginController.doPost()\" have done");
         } else {
