@@ -12,22 +12,17 @@
 <!--end nav-->
 
 <div class="container">
-    <c:if test="${message == 'authErr'}">
-        <div class="alert alert-danger alert-dismissible" role="alert">Неверное имя пользователя или пароль</div>
-    </c:if>
-
     <h1>Система успеваемости студентов</h1>
     <div class="row">
         <div class="col-md-3 sidebar">
             <%@include file="/pages/blocks/sidebar.jsp" %>
         </div>
         <div class="col-md-9">
-            <c:if test="${sessionScope.get('email') == null}">
-                <p class="lead">Главная страница</p>
-            </c:if>
-            <c:if test="${sessionScope.get('email') != null}">
-                <p class="lead"><%=session.getAttribute("name")%>, добро пожаловать в систему успеваемости студентов</p>
-            </c:if>
+            <h3>Успеваемость</h3><br/>
+            <p>Данная страница доступна только для студента, который вошёл в систему. На ней отображается успеваемость
+                по предметам.</p>
+
+
         </div>
     </div>
 </div>

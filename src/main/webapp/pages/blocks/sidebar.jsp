@@ -5,9 +5,9 @@
     </li>
     <li><a href="${pageContext.request.contextPath}/schedule">Расписание</a></li>
     <c:if test="${role == 'student'}">
-        <li><a href="#">Успеваемость</a></li>
+        <li><a href="${pageContext.request.contextPath}/students/performance">Успеваемость</a></li>
     </c:if>
-    <c:if test="${role == 'teachear'}">
+    <c:if test="${role == 'teacher'}">
         <%@include file="/pages/blocks/sidebarteacher.jsp" %>
     </c:if>
     <c:if test="${role == 'admin'}">

@@ -5,21 +5,22 @@
          version="4.0">
 
     <display-name>StudentsRating</display-name>
-    <!--<servlet>-->
-    <!--<servlet-name>loginController</servlet-name>-->
-    <!--<servlet-class>ru.yandex.sashanc.controllers.LoginController</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>loginController</servlet-name>-->
-    <!--<url-pattern>/login</url-pattern>-->
-    <!--</servlet-mapping>-->
 
     <filter>
-        <filter-name>authFilter</filter-name>
-        <filter-class>ru.yandex.sashanc.controllers.filters.AuthFilter</filter-class>
+        <filter-name>studentsFilter</filter-name>
+        <filter-class>ru.yandex.sashanc.controllers.filters.StudentsFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>authFilter</filter-name>
-        <url-pattern>/student/*</url-pattern>
+        <filter-name>studentsFilter</filter-name>
+        <url-pattern>/students/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>teachersFilter</filter-name>
+        <filter-class>ru.yandex.sashanc.controllers.filters.TeachersFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>teachersFilter</filter-name>
+        <url-pattern>/teachers/*</url-pattern>
     </filter-mapping>
 </web-app>
