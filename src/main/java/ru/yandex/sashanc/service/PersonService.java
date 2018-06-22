@@ -20,24 +20,17 @@ public class PersonService implements IPersonService {
                 (password != null) && (!password.equals("")) &&
                 (role.equals("student") || role.equals("teacher") || role.equals("admin")) &&
                 (getPersonByEmail(email) == null)) {
-            Person person = new Person();
-            person.setName(name);
-            person.setSurname(surname);
-            person.setEmail(email);
-            person.setPassword(password);
             if (role.equals("teacher")) {
-                person.setRole("ncteacher");
-            } else {
-                if (role.equals("admin")) {
-                    person.setRole("ncadmin");
-                } else {
-                    person.setRole(role);
-                }
+                role = "ncteacher";
             }
-            person.setRegDate(new Date(System.currentTimeMillis()));
+            if (role.equals("admin")) {
+                role = "ncadmin";
+            }
+            Date date = new Date(System.currentTimeMillis());
+            Person person = new Person(name, surname, email, password, role, date, date);
             IPersonDao personDao = new PersonDaoImpl();
             try {
-                return personDao.addPerson(person);
+                return personDao.addPerson(person) == 1;
             } catch (SQLException e) {
                 logger.info("catch block of method \"PersonService.createPerson()\" have done " + e);
             }
@@ -69,7 +62,7 @@ public class PersonService implements IPersonService {
         try {
             return personDao.getListPersons(role);
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.info("catch block of method \"getPersons\" from \"PersonService\" have done " + e);
         }
         return new ArrayList<>();
     }

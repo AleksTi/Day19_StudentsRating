@@ -16,7 +16,7 @@ public class PersonDaoImpl implements IPersonDao {
 
 
     @Override
-    public boolean addPerson(Person person) throws SQLException {
+    public int addPerson(Person person) throws SQLException {
         try (Connection connection = connectionManager.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("INSERT " +
                     "INTO person (name, surname, email, passwordhash, role, datereg, lastlogdate)  " +
@@ -28,12 +28,9 @@ public class PersonDaoImpl implements IPersonDao {
                 statement.setString(5, person.getRole());
                 statement.setDate(6, person.getRegDate());
                 statement.setDate(7, person.getRegDate());
-                if (statement.executeUpdate() == 1) {
-                    return true;
-                }
+                return statement.executeUpdate();
             }
         }
-        return false;
     }
 
     @Override
@@ -94,16 +91,16 @@ public class PersonDaoImpl implements IPersonDao {
     }
 
     private Person getPersonFromDB(ResultSet resultSet) throws SQLException {
-        Person person = new Person();
-        person.setId(resultSet.getInt("id"));
-        person.setName(resultSet.getString("name"));
-        person.setSurname(resultSet.getString("surname"));
-        person.setEmail(resultSet.getString("email"));
-        person.setPassword(resultSet.getString("passwordhash"));
-        person.setRole(resultSet.getString("role"));
-        person.setRegDate(resultSet.getDate("datereg"));
-        person.setLastLogdate(resultSet.getDate("lastlogdate"));
-        person.setConfirmDate(resultSet.getDate("confirmationdate"));
-        return person;
+        return new Person(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getString("surname"),
+                resultSet.getString("email"),
+                resultSet.getString("passwordhash"),
+                resultSet.getString("role"),
+                resultSet.getDate("datereg"),
+                resultSet.getDate("lastlogdate"),
+                resultSet.getDate("confirmationdate")
+        );
     }
 }

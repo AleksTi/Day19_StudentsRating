@@ -13,6 +13,28 @@ public class Person {
     protected Date lastLogdate;
     protected Date confirmDate;
 
+    public Person(String name, String surname, String email, String password, String role, Date regDate, Date lastLogdate) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.regDate = regDate;
+        this.lastLogdate = lastLogdate;
+    }
+
+    public Person(int id, String name, String surname, String email, String password, String role, Date regDate, Date lastLogdate, Date confirmDate) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.regDate = regDate;
+        this.lastLogdate = lastLogdate;
+        this.confirmDate = confirmDate;
+    }
+
     public int getId() {
         return id;
     }

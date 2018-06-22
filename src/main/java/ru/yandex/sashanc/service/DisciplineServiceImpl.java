@@ -6,6 +6,7 @@ import ru.yandex.sashanc.data.dao.IDisciplineDao;
 import ru.yandex.sashanc.pojo.Discipline;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 public class DisciplineServiceImpl implements IDisciplineService {
@@ -19,6 +20,6 @@ public class DisciplineServiceImpl implements IDisciplineService {
         } catch (SQLException e) {
             logger.info("Catch block of method \"DisciplineServiceImpl.getDisciplines()\" have done" + e);
         }
-        return null;
+        return Collections.emptyList();
     }
 }
