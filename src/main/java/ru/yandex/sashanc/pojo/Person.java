@@ -3,15 +3,15 @@ package ru.yandex.sashanc.pojo;
 import java.sql.Date;
 
 public class Person {
-    protected int id;
-    protected String name;
-    protected String surname;
-    protected String email;
-    protected String password;
-    protected String role;
-    protected Date regDate;
-    protected Date lastLogdate;
-    protected Date confirmDate;
+    private int id;
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private String role;
+    private Date regDate;
+    private Date lastLogdate;
+    private Date confirmDate;
 
     public Person(String name, String surname, String email, String password, String role, Date regDate, Date lastLogdate) {
         this.name = name;

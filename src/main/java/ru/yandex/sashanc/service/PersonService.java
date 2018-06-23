@@ -13,6 +13,16 @@ import java.util.List;
 public class PersonService implements IPersonService {
     private static final Logger logger = Logger.getLogger(PersonService.class);
 
+    private IPersonDao personDao;
+
+    public PersonService() {
+        personDao = new PersonDaoImpl();
+    }
+
+    public PersonService(IPersonDao personDao) {
+        this.personDao = personDao;
+    }
+
     @Override
     public boolean createPerson(String name, String surname, String email, String password, String role) {
         if ((name != null) && (!name.equals("")) &&
@@ -28,7 +38,6 @@ public class PersonService implements IPersonService {
             }
             Date date = new Date(System.currentTimeMillis());
             Person person = new Person(name, surname, email, password, role, date, date);
-            IPersonDao personDao = new PersonDaoImpl();
             try {
                 return personDao.addPerson(person) == 1;
             } catch (SQLException e) {
@@ -46,7 +55,6 @@ public class PersonService implements IPersonService {
     @Override
     public Person getPersonByEmail(String email) {
         if (email != null) {
-            IPersonDao personDao = new PersonDaoImpl();
             try {
                 return personDao.getPersonByEmail(email);
             } catch (SQLException e) {
@@ -58,7 +66,6 @@ public class PersonService implements IPersonService {
 
     @Override
     public List<Person> getPersons(String role) {
-        IPersonDao personDao = new PersonDaoImpl();
         try {
             return personDao.getListPersons(role);
         } catch (SQLException e) {

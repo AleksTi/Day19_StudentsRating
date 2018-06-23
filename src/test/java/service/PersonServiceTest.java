@@ -16,15 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PersonServiceTest {
     private static final Logger logger = Logger.getLogger(PersonServiceTest.class);
 
-    private IPersonService personServise;
     private IPersonDao personDaoMock;
+
+    private IPersonService personServise;
     private List<Person> students;
+    private Person person1;
 
     @BeforeClass
     public static void beforeTests() {
@@ -35,17 +36,18 @@ public class PersonServiceTest {
     public void before() {
         logger.info("@Before");
 
-        personServise = new PersonService();
         personDaoMock = mock(PersonDaoImpl.class);
+        personServise = new PersonService(personDaoMock);
         students = new ArrayList<>();
         Date date = new Date(System.currentTimeMillis());
-        Person person1 = new Person("Name1", "Surname1", "email1", "password1", "student", date, date);
+        person1 = new Person("Name1", "Surname1", "email1", "password1", "student", date, date);
         Person person2 = new Person("Name2", "Surname2", "email2", "password2", "student", date, date);
         students.add(person1);
         students.add(person2);
         try {
             when(personDaoMock.addPerson(person1)).thenReturn(1);
             when(personDaoMock.getPersonByEmail("email1")).thenReturn(person1);
+            when(personDaoMock.getListPersons("student")).thenReturn(students);
         } catch (SQLException e) {
             logger.info("SQLException in PersonServiceTest.before() has occurred " + e);
         }
@@ -74,18 +76,21 @@ public class PersonServiceTest {
     public void getPersonsTest() {
         logger.info("getPersonsTest()");
         try {
-            when(personDaoMock.getListPersons("student")).thenReturn(students);
+
+            List<Person> personList = personServise.getPersons("student");
+            verify(personDaoMock, times(1)).getListPersons("student");
+            assertNotNull("User is not null", personList);
+            assertEquals("Name1", personList.get(0).getName());
+            assertEquals("Surname1", personList.get(0).getSurname());
+            assertEquals("email1", personList.get(0).getEmail());
+            assertEquals("password1", personList.get(0).getPassword());
+            assertEquals("student", personList.get(0).getRole());
         } catch (SQLException e) {
             logger.info("SQLException in PersonServiceTest.getPersonsTest() has occurred " + e);
         }
-        List<Person> personList = personServise.getPersons("student");
-        assertNotNull("User is not null", personList);
-        assertEquals("Name1", personList.get(5).getName());
-        assertEquals("Surname1", personList.get(5).getSurname());
-        assertEquals("email1", personList.get(5).getEmail());
-        assertEquals("password1", personList.get(5).getPassword());
-        assertEquals("student", personList.get(5).getRole());
+
     }
+
 
     @Test
     public void checkPersonTest() {
